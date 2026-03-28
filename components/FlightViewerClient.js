@@ -7,6 +7,8 @@ import { mountFlightViewer } from "../lib/flight-viewer-runtime"
 export default function FlightViewerClient() {
   const canvasRef = useRef(null)
   const refreshButtonRef = useRef(null)
+  const injectConflictButtonRef = useRef(null)
+  const openAtcButtonRef = useRef(null)
   const statusBadgeRef = useRef(null)
   const flightCountRef = useRef(null)
   const feedModeRef = useRef(null)
@@ -15,15 +17,20 @@ export default function FlightViewerClient() {
   const airportListRef = useRef(null)
   const flightListRef = useRef(null)
   const feedNoteRef = useRef(null)
+  const advisoryBannerRef = useRef(null)
+  const advisoryListRef = useRef(null)
   const hudPanelRef = useRef(null)
   const collapseButtonRef = useRef(null)
   const hoverDetailsToggleRef = useRef(null)
   const hoverCardRef = useRef(null)
+  const toastAlertRef = useRef(null)
 
   useEffect(() => {
     const cleanup = mountFlightViewer({
       canvas: canvasRef.current,
       refreshButton: refreshButtonRef.current,
+      injectConflictButton: injectConflictButtonRef.current,
+      openAtcButton: openAtcButtonRef.current,
       statusBadge: statusBadgeRef.current,
       flightCount: flightCountRef.current,
       feedMode: feedModeRef.current,
@@ -32,10 +39,13 @@ export default function FlightViewerClient() {
       airportList: airportListRef.current,
       flightList: flightListRef.current,
       feedNote: feedNoteRef.current,
+      advisoryBanner: advisoryBannerRef.current,
+      advisoryList: advisoryListRef.current,
       hudPanel: hudPanelRef.current,
       collapseButton: collapseButtonRef.current,
       hoverDetailsToggle: hoverDetailsToggleRef.current,
-      hoverCard: hoverCardRef.current
+      hoverCard: hoverCardRef.current,
+      toastAlert: toastAlertRef.current
     })
 
     return cleanup
@@ -81,6 +91,22 @@ export default function FlightViewerClient() {
               type="button"
             >
               Refresh Live Feed
+            </button>
+            <button
+              ref={injectConflictButtonRef}
+              id="injectConflictButton"
+              className="secondary-action"
+              type="button"
+            >
+              Inject Conflict
+            </button>
+            <button
+              ref={openAtcButtonRef}
+              id="openAtcButton"
+              className="secondary-action"
+              type="button"
+            >
+              Open KDTW ATC
             </button>
             <span
               ref={statusBadgeRef}
@@ -152,6 +178,16 @@ export default function FlightViewerClient() {
               </label>
             </section>
 
+            <section className="panel panel-wide" aria-labelledby="assist-heading">
+              <h2 id="assist-heading">AI Assist</h2>
+              <div
+                ref={advisoryBannerRef}
+                id="advisoryBanner"
+                className="advisory-banner severity-info"
+              />
+              <ul ref={advisoryListRef} id="advisoryList" className="advisory-list" />
+            </section>
+
             <section className="panel panel-wide" aria-labelledby="aircraft-heading">
               <h2 id="aircraft-heading">Active Aircraft</h2>
               <ol ref={flightListRef} id="flightList" className="flight-list" />
@@ -167,7 +203,8 @@ export default function FlightViewerClient() {
 
           <p className="hint">
             Aircraft refresh automatically. The live feed is proxied through the
-            Next.js server to avoid browser CORS issues.
+            Next.js server to avoid browser CORS issues. LiveATC audio opens on
+            the official LiveATC player in a separate tab.
           </p>
         </div>
       </aside>
@@ -176,6 +213,12 @@ export default function FlightViewerClient() {
         ref={hoverCardRef}
         id="hoverCard"
         className="hover-card hidden"
+        aria-hidden="true"
+      />
+      <div
+        ref={toastAlertRef}
+        id="toastAlert"
+        className="toast-alert severity-info hidden"
         aria-hidden="true"
       />
     </div>
