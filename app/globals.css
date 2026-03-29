@@ -370,6 +370,12 @@ h1 {
   line-height: 1.45;
 }
 
+.airport-weather {
+  color: rgba(222, 235, 247, 0.9);
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
 .flight-header {
   display: flex;
   justify-content: space-between;
