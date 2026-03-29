@@ -7,6 +7,7 @@ const ELEVENLABS_API_BASE = "https://api.elevenlabs.io"
 const DEFAULT_VOICE_ID = "JBFqnCBsd6RMkjVDRZzb"
 const DEFAULT_MODEL_ID = "eleven_multilingual_v2"
 const DEFAULT_OUTPUT_FORMAT = "mp3_44100_128"
+const DEFAULT_VOICE_SPEED = 1.2
 const JSON_HEADERS = {
   "Cache-Control": "no-store"
 }
@@ -79,7 +80,10 @@ export async function POST(request) {
         },
         body: JSON.stringify({
           text,
-          model_id: modelId
+          model_id: modelId,
+          voice_settings: {
+            speed: DEFAULT_VOICE_SPEED
+          }
         }),
         cache: "no-store"
       }
