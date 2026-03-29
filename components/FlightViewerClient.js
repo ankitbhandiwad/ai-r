@@ -21,6 +21,7 @@ export default function FlightViewerClient() {
   const hudPanelRef = useRef(null)
   const collapseButtonRef = useRef(null)
   const hoverDetailsToggleRef = useRef(null)
+  const terrainToggleRef = useRef(null)
   const autoRefreshToggleRef = useRef(null)
   const autoRefreshRateInputRef = useRef(null)
   const hoverCardRef = useRef(null)
@@ -44,6 +45,7 @@ export default function FlightViewerClient() {
       hudPanel: hudPanelRef.current,
       collapseButton: collapseButtonRef.current,
       hoverDetailsToggle: hoverDetailsToggleRef.current,
+      terrainToggle: terrainToggleRef.current,
       autoRefreshToggle: autoRefreshToggleRef.current,
       autoRefreshRateInput: autoRefreshRateInputRef.current,
       hoverCard: hoverCardRef.current,
@@ -187,6 +189,14 @@ export default function FlightViewerClient() {
                   defaultChecked
                 />
                 Show aircraft hover details
+              </label>
+              <label className="toggle-row">
+                <input
+                  ref={terrainToggleRef}
+                  id="terrainToggle"
+                  type="checkbox"
+                />
+                Show terrain map
               </label>
               <label className="toggle-row">
                 <input
