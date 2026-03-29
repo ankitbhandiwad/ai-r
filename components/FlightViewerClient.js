@@ -8,7 +8,6 @@ export default function FlightViewerClient() {
   const canvasRef = useRef(null)
   const refreshButtonRef = useRef(null)
   const injectConflictButtonRef = useRef(null)
-  const openAtcButtonRef = useRef(null)
   const statusBadgeRef = useRef(null)
   const flightCountRef = useRef(null)
   const feedModeRef = useRef(null)
@@ -30,7 +29,6 @@ export default function FlightViewerClient() {
       canvas: canvasRef.current,
       refreshButton: refreshButtonRef.current,
       injectConflictButton: injectConflictButtonRef.current,
-      openAtcButton: openAtcButtonRef.current,
       statusBadge: statusBadgeRef.current,
       flightCount: flightCountRef.current,
       feedMode: feedModeRef.current,
@@ -90,7 +88,7 @@ export default function FlightViewerClient() {
               className="primary-action"
               type="button"
             >
-              Refresh Live Feed
+              Refresh
             </button>
             <button
               ref={injectConflictButtonRef}
@@ -99,14 +97,6 @@ export default function FlightViewerClient() {
               type="button"
             >
               Inject Conflict
-            </button>
-            <button
-              ref={openAtcButtonRef}
-              id="openAtcButton"
-              className="secondary-action"
-              type="button"
-            >
-              Open KDTW ATC
             </button>
             <span
               ref={statusBadgeRef}
@@ -203,8 +193,7 @@ export default function FlightViewerClient() {
 
           <p className="hint">
             Aircraft refresh automatically. The live feed is proxied through the
-            Next.js server to avoid browser CORS issues. LiveATC audio opens on
-            the official LiveATC player in a separate tab.
+            Next.js server to avoid browser CORS issues.
           </p>
         </div>
       </aside>
