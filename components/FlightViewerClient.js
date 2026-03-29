@@ -201,11 +201,6 @@ export default function FlightViewerClient() {
             </section>
           </div>
 
-          <p className="hint">
-            Use Refresh for on-demand updates, or enable auto refresh from Display.
-            The live feed is proxied through the Next.js server to avoid browser
-            CORS issues.
-          </p>
         </div>
       </aside>
 
