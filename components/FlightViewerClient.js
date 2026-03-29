@@ -147,7 +147,7 @@ export default function FlightViewerClient() {
                   <strong>Rotate:</strong> Left-drag or one-finger drag
                 </li>
                 <li>
-                  <strong>Pan:</strong> Shift-drag, right-drag, or two-finger drag
+                  <strong>Pan:</strong> Shift-drag, right-drag, two-finger drag, or WASD / arrow keys
                 </li>
                 <li>
                   <strong>Zoom:</strong> Mouse wheel or pinch

@@ -437,7 +437,8 @@ h1 {
   background: rgba(5, 16, 24, 0.88);
   backdrop-filter: blur(12px);
   box-shadow: 0 20px 44px rgba(0, 0, 0, 0.34);
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -445,6 +446,7 @@ h1 {
 }
 
 .toast-alert.hidden {
+  pointer-events: none;
   opacity: 0;
   visibility: hidden;
   transform: translateY(12px);
